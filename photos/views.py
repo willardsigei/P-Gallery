@@ -26,3 +26,10 @@ def search_category(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'category.html', {"message": message})
+
+def about_me(request):
+    return render(request, 'about.html')
+
+def getLocations(request,location):
+    locations = Image.filterimageByLocation(location)
+    return render(request,'locations.html',{'images':locations})
