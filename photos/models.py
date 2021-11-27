@@ -24,3 +24,16 @@ class Image(models.Model):
     def __str__(self):
         return self.image_name
 
+    @classmethod
+    def search_by_image_category(cls,search_term):
+        images = cls.objects.filter(image_category__category_name__icontains=search_term)
+        return images
+    @classmethod
+    def images(cls):
+        images = cls.objects.all()
+        return images 
+
+    @classmethod
+    def filterimageByLocation(cls,location):
+        location = cls.objects.filter(image_location__location_name = location).all()
+        return location    
