@@ -11,6 +11,17 @@
     {% endif %}
 
   </div>
+  <div class="row">
+    <img src="{{images.image.url}}"  class="img-responsive" alt="">
+  </div>
+  <div class="row">
+
+  {% if images %}
+    {% for image in images %}
+      <div class="col-sm-6 col-md-3">
+           <img src="{{image.image.url}}"  class="img-responsive" alt="image">
+
+      </div>
     {% endfor %}
   {% endif %}
   </div>
