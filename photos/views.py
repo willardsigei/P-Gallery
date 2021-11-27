@@ -9,3 +9,9 @@ def home(request):
     locations = Location.objects.all()
     return render(request, 'index.html', {'images':images,'locations':locations})
 
+def gallery(request):
+    images = Image.objects.all()
+    categories = Category.objects.all()
+    location = Location.objects.all()
+    return render(request, 'gallery.html', locals())
+
