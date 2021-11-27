@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+
+<div class="container-fluid">
+  <div class="column pt-3">
+    {% for image in images %}
+    <div class="col-md-4 col-sm-4 col-xs-4 pt-3">
+      <img src="{{image.image.url}}" class="img-responsive img-fluid img-thumbnail" style="width: 300px;height:200px"
+        data-toggle="modal" data-target="#{{ image.id }}">
+    </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
