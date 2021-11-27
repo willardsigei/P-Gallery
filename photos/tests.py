@@ -61,7 +61,6 @@ class ImageTestClass(TestCase):
 
         self.image_category = Category(category_name='Nature')
         self.image_category.save()
-#
         self.image_ferrari = Image(image_name='Lambo', image_description='this is a test instance',
                                    image_location=self.image_location, image_category=self.image_category)
         self.image_ferrari.save_image()
