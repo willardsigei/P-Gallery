@@ -53,3 +53,37 @@ class CategoryTestClass(TestCase):
         self.category.delete_category()
         category = Category.objects.all()
         self.assertTrue(len(category) == 0)
+
+class ImageTestClass(TestCase):
+    def setUp(self):
+        self.image_location = Location(location_name='Nairobi')
+        self.image_location.save()
+
+        self.image_category = Category(category_name='Nature')
+        self.image_category.save()
+#
+        self.image_ferrari = Image(image_name='Lambo', image_description='this is a test instance',
+                                   image_location=self.image_location, image_category=self.image_category)
+        self.image_ferrari.save_image()
+
+ 
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image_lambo, Image))
+
+    def tearDown(self):
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()
+
+    def test_save_image(self):
+        self.image_ferrari.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) > 0)
+
+    def test_delete_image(self):
+        self.image_ferrari.save_image()
+        self.image_ferrari.delete_image()
+        self.image_gucci.delete_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) == 0)
