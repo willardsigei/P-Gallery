@@ -8,3 +8,14 @@ class Image(models.Model):
     image = CloudinaryField('image')
     image_location = models.ForeignKey('Location',on_delete=models.CASCADE)
     image_category = models.ForeignKey('Category',on_delete=models.CASCADE)
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def update_image(self, Name=None, category=None):
+        self.image_name = Name if Name else self.Name
+        self.image_category = category if category else self.image_category 
+        self.save()
