@@ -37,3 +37,15 @@ class Image(models.Model):
     def filterimageByLocation(cls,location):
         location = cls.objects.filter(image_location__location_name = location).all()
         return location    
+
+class Category(models.Model):
+    category_name = models.CharField(max_length =30)
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    def __str__(self):
+        return self.category_name
